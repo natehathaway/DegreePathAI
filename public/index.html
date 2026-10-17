@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#102a43">
+    <title>DegreePath AI — Demo planner</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="DegreePath AI home">
+        <span class="brand-mark">D</span>
+        <span>DegreePath <span class="brand-light">AI</span></span>
+      </a>
+      <div class="account-bar">
+        <span id="account-name"></span>
+        <button id="logout-button" class="button button-quiet hidden" type="button">Sign out</button>
+      </div>
+    </header>
+    <main>
+      <section id="auth-panel" class="auth-panel hidden" aria-labelledby="auth-title">
+        <div class="auth-intro">
+          <p class="eyebrow">A student project prototype</p>
+          <h1>Make your next step clearer.</h1>
+          <p>Track a fictional sample plan and ask questions about your progress.</p>
+        </div>
+        <form id="auth-form" class="panel auth-form">
+          <h2 id="auth-title">Create your demo account</h2>
+          <label id="name-field" class="form-field">Name<input name="name" autocomplete="name" minlength="2" maxlength="60"></label>
+          <label class="form-field">Email<input name="email" type="email" autocomplete="email" required></label>
+          <label class="form-field">Password<input name="password" type="password" autocomplete="new-password" minlength="8" required></label>
+          <button id="auth-submit" class="button button-primary" type="submit">Create account</button>
+          <button id="auth-switch" class="text-button" type="button">Already have an account? Sign in</button>
+        </form>
+      </section>
+
+      <section id="app-panel" class="hidden">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Your demo workspace</p>
+            <h1>Degree progress</h1>
+          </div>
+          <div id="summary-card" class="summary-card"></div>
+        </div>
+        <div class="notice notice-demo" role="note">
+          <strong>Fictional sample data.</strong> Courses, credits, prerequisites, and requirement groups are invented for this prototype. They are not BYU–Idaho catalog facts or official advising.
+        </div>
+        <div class="workspace">
+          <section class="panel progress-panel">
+            <div class="section-heading">
+              <div><p class="eyebrow">Sample program map</p><h2>Requirements</h2></div>
+            </div>
+            <div id="requirements-list" class="requirements-list"></div>
+            <div class="section-heading course-heading">
+              <div><p class="eyebrow">Fictional courses</p><h2>Course tracker</h2></div>
+            </div>
+            <div id="courses-list" class="courses-list"></div>
+          </section>
+
+          <section class="panel planner-panel">
+            <div class="section-heading">
+              <div><p class="eyebrow">Ask about your sample plan</p><h2>Planning conversations</h2></div>
+              <button id="new-chat-button" class="button button-secondary" type="button">New question</button>
+            </div>
+            <div class="conversation-layout">
+              <aside id="conversation-list" class="conversation-list" aria-label="Saved conversations"></aside>
+              <div class="chat-column">
+                <div id="chat-empty" class="chat-empty">Start a new question, or select a saved conversation.</div>
+                <div id="messages-list" class="messages-list" aria-live="polite"></div>
+                <form id="question-form" class="question-form hidden">
+                  <label class="sr-only" for="question-input">Your planning question</label>
+                  <textarea id="question-input" name="question" rows="3" maxlength="2000" placeholder="What sample course could I take next?" required></textarea>
+                  <div class="question-controls">
+                    <span class="muted">With AI enabled, only this question and current sample progress are sent—not saved chat history.</span>
+                    <button id="send-button" class="button button-primary" type="submit">Send question</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <div id="notice" class="notice notice-error hidden" role="alert"></div>
+    </main>
+    <footer>DegreePath AI · Senior project prototype · Not official academic advising</footer>
+  </body>
+</html>
